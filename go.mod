@@ -1,5 +1,3 @@
-module solid-lamp
+module github.com/PeterJohnBishop/solid-lamp
 
-go 1.25.1
-
-require github.com/joho/godotenv v1.5.1 // indirect
+go 1.23.5
