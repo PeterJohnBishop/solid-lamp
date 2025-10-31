@@ -267,7 +267,7 @@ func (c *ClickUpClient) GetTask(taskId string, params GetTaskQueryParams) (*Task
 		q.Set("custom_task_ids", fmt.Sprintf("%t", *params.CustomTaskIds))
 	}
 	if params.TeamId != nil {
-		q.Set("team_id", fmt.Sprintf("%t", *params.TeamId))
+		q.Set("team_id", fmt.Sprintf("%d", *params.TeamId))
 	}
 	if params.IncludeMarkdownDescription != nil {
 		q.Set("include_markdown_description", fmt.Sprintf("%t", *params.IncludeMarkdownDescription))
@@ -424,7 +424,7 @@ func (c *ClickUpClient) GetTaskTimeInStatus(taskId string, params GetTaskTimeInS
 		q.Set("custom_task_ids", fmt.Sprintf("%t", *params.CustomTaskIds))
 	}
 	if params.TeamId != nil {
-		q.Set("team_id", fmt.Sprintf("%t", *params.TeamId))
+		q.Set("team_id", fmt.Sprintf("%d", *params.TeamId))
 	}
 
 	reqURL := baseURL
@@ -465,7 +465,7 @@ func (c *ClickUpClient) GetBulkTaskTimeInStatus(taskId string, params GetBulkTas
 		q.Set("custom_task_ids", fmt.Sprintf("%t", *params.CustomTaskIds))
 	}
 	if params.TeamId != nil {
-		q.Set("team_id", fmt.Sprintf("%t", *params.TeamId))
+		q.Set("team_id", fmt.Sprintf("%d", *params.TeamId))
 	}
 	for _, taskId := range params.TaskIds {
 		q.Add("task_ids", taskId)
