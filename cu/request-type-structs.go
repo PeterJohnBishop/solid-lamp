@@ -1,4 +1,4 @@
-package solidlamp
+package cu
 
 type CreateTaskRequest struct {
 	Name                      string                 `json:"name"` // required

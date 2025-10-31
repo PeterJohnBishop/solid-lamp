@@ -6,9 +6,11 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
+
+	"github.com/PeterJohnBishop/solid-lamp/cu"
 )
 
-func (c *ClickUpClient) CreateTask(listId string, reqBody CreateTaskRequest) (*Task, error) {
+func (c *ClickUpClient) CreateTask(listId string, reqBody cu.CreateTaskRequest) (*cu.Task, error) {
 	baseURL := fmt.Sprintf("https://api.clickup.com/api/v2/list/%s/task", url.PathEscape(listId))
 
 	bodyBytes, err := json.Marshal(reqBody)
@@ -33,7 +35,7 @@ func (c *ClickUpClient) CreateTask(listId string, reqBody CreateTaskRequest) (*T
 		return nil, err
 	}
 
-	var task Task
+	var task cu.Task
 	if err := json.NewDecoder(resp.Body).Decode(&task); err != nil {
 		return nil, err
 	}
@@ -41,7 +43,7 @@ func (c *ClickUpClient) CreateTask(listId string, reqBody CreateTaskRequest) (*T
 	return &task, nil
 }
 
-func (c *ClickUpClient) GetTasks(listID string, params GetTasksQueryParams) (*Tasks, error) {
+func (c *ClickUpClient) GetTasks(listID string, params cu.GetTasksQueryParams) (*cu.Tasks, error) {
 	baseURL := fmt.Sprintf("https://api.clickup.com/api/v2/list/%s/task", url.PathEscape(listID))
 
 	q := url.Values{}
@@ -143,7 +145,7 @@ func (c *ClickUpClient) GetTasks(listID string, params GetTasksQueryParams) (*Ta
 		return nil, err
 	}
 
-	var tasks Tasks
+	var tasks cu.Tasks
 	if err := json.NewDecoder(resp.Body).Decode(&tasks); err != nil {
 		return nil, err
 	}
@@ -151,7 +153,7 @@ func (c *ClickUpClient) GetTasks(listID string, params GetTasksQueryParams) (*Ta
 	return &tasks, nil
 }
 
-func (c *ClickUpClient) GetFilteredTeamTasks(teamId string, params GetFilteredTeamTasksQueryParams) (*Tasks, error) {
+func (c *ClickUpClient) GetFilteredTeamTasks(teamId string, params cu.GetFilteredTeamTasksQueryParams) (*cu.Tasks, error) {
 	baseURL := fmt.Sprintf("https://api.clickup.com/api/v2/team/%s/task", url.PathEscape(teamId))
 
 	q := url.Values{}
@@ -250,7 +252,7 @@ func (c *ClickUpClient) GetFilteredTeamTasks(teamId string, params GetFilteredTe
 		return nil, fmt.Errorf("unexpected status code: %d", resp.StatusCode)
 	}
 
-	var tasks Tasks
+	var tasks cu.Tasks
 	if err := json.NewDecoder(resp.Body).Decode(&tasks); err != nil {
 		return nil, err
 	}
@@ -258,7 +260,7 @@ func (c *ClickUpClient) GetFilteredTeamTasks(teamId string, params GetFilteredTe
 	return &tasks, nil
 }
 
-func (c *ClickUpClient) GetTask(taskId string, params GetTaskQueryParams) (*Task, error) {
+func (c *ClickUpClient) GetTask(taskId string, params cu.GetTaskQueryParams) (*cu.Task, error) {
 	baseURL := fmt.Sprintf("https://api.clickup.com/api/v2/task/%s", url.PathEscape(taskId))
 
 	q := url.Values{}
@@ -301,7 +303,7 @@ func (c *ClickUpClient) GetTask(taskId string, params GetTaskQueryParams) (*Task
 		return nil, err
 	}
 
-	var task Task
+	var task cu.Task
 	if err := json.NewDecoder(resp.Body).Decode(&task); err != nil {
 		return nil, err
 	}
@@ -310,7 +312,7 @@ func (c *ClickUpClient) GetTask(taskId string, params GetTaskQueryParams) (*Task
 
 }
 
-func (c *ClickUpClient) UpdateTask(taskId string, params UpdateTaskQueryParams) (*Task, error) {
+func (c *ClickUpClient) UpdateTask(taskId string, params cu.UpdateTaskQueryParams) (*cu.Task, error) {
 	baseURL := fmt.Sprintf("https://api.clickup.com/api/v2/task/%s", url.PathEscape(taskId))
 
 	q := url.Values{}
@@ -343,7 +345,7 @@ func (c *ClickUpClient) UpdateTask(taskId string, params UpdateTaskQueryParams) 
 		return nil, err
 	}
 
-	var task Task
+	var task cu.Task
 	if err := json.NewDecoder(resp.Body).Decode(&task); err != nil {
 		return nil, err
 	}
@@ -351,7 +353,7 @@ func (c *ClickUpClient) UpdateTask(taskId string, params UpdateTaskQueryParams) 
 	return &task, nil
 }
 
-func (c *ClickUpClient) DeleteTask(taskId string, params DeleteTaskQueryParams) error {
+func (c *ClickUpClient) DeleteTask(taskId string, params cu.DeleteTaskQueryParams) error {
 	baseURL := fmt.Sprintf("https://api.clickup.com/api/v2/task/%s", url.PathEscape(taskId))
 
 	q := url.Values{}
@@ -382,7 +384,7 @@ func (c *ClickUpClient) DeleteTask(taskId string, params DeleteTaskQueryParams) 
 	return nil
 }
 
-func (c *ClickUpClient) MergeTasks(taskId string, reqBody MergeTasksRequest) (*Task, error) {
+func (c *ClickUpClient) MergeTasks(taskId string, reqBody cu.MergeTasksRequest) (*cu.Task, error) {
 	baseURL := fmt.Sprintf("https://api.clickup.com/api/v2/task/%s/merge", url.PathEscape(taskId))
 
 	bodyBytes, err := json.Marshal(reqBody)
@@ -407,7 +409,7 @@ func (c *ClickUpClient) MergeTasks(taskId string, reqBody MergeTasksRequest) (*T
 		return nil, err
 	}
 
-	var task Task
+	var task cu.Task
 	if err := json.NewDecoder(resp.Body).Decode(&task); err != nil {
 		return nil, err
 	}
@@ -415,7 +417,7 @@ func (c *ClickUpClient) MergeTasks(taskId string, reqBody MergeTasksRequest) (*T
 	return &task, nil
 }
 
-func (c *ClickUpClient) GetTaskTimeInStatus(taskId string, params GetTaskTimeInStatusQueryParams) (*TaskTimeInStatusResponse, error) {
+func (c *ClickUpClient) GetTaskTimeInStatus(taskId string, params cu.GetTaskTimeInStatusQueryParams) (*cu.TaskTimeInStatusResponse, error) {
 	baseURL := fmt.Sprintf("https://api.clickup.com/api/v2/task/%s/time_in_status", url.PathEscape(taskId))
 
 	q := url.Values{}
@@ -448,7 +450,7 @@ func (c *ClickUpClient) GetTaskTimeInStatus(taskId string, params GetTaskTimeInS
 		return nil, err
 	}
 
-	var taskTimeInStatus TaskTimeInStatusResponse
+	var taskTimeInStatus cu.TaskTimeInStatusResponse
 	if err := json.NewDecoder(resp.Body).Decode(&taskTimeInStatus); err != nil {
 		return nil, err
 	}
@@ -456,7 +458,7 @@ func (c *ClickUpClient) GetTaskTimeInStatus(taskId string, params GetTaskTimeInS
 	return &taskTimeInStatus, nil
 }
 
-func (c *ClickUpClient) GetBulkTaskTimeInStatus(taskId string, params GetBulkTaskTimeInStatusQueryParams) (*BulkStatusResponse, error) {
+func (c *ClickUpClient) GetBulkTaskTimeInStatus(taskId string, params cu.GetBulkTaskTimeInStatusQueryParams) (*cu.BulkStatusResponse, error) {
 	baseURL := "https://api.clickup.com/api/v2/task/bulk_time_in_status/task_ids"
 
 	q := url.Values{}
@@ -492,7 +494,7 @@ func (c *ClickUpClient) GetBulkTaskTimeInStatus(taskId string, params GetBulkTas
 		return nil, err
 	}
 
-	var bulkTaskTimeInStatus BulkStatusResponse
+	var bulkTaskTimeInStatus cu.BulkStatusResponse
 	if err := json.NewDecoder(resp.Body).Decode(&bulkTaskTimeInStatus); err != nil {
 		return nil, err
 	}
@@ -500,7 +502,7 @@ func (c *ClickUpClient) GetBulkTaskTimeInStatus(taskId string, params GetBulkTas
 	return &bulkTaskTimeInStatus, nil
 }
 
-func (c *ClickUpClient) CreateTaskFromTemplate(listId, templateId string, reqBody CreateTaskFromTemplateRequest) (*Task, error) {
+func (c *ClickUpClient) CreateTaskFromTemplate(listId, templateId string, reqBody cu.CreateTaskFromTemplateRequest) (*cu.Task, error) {
 	baseURL := fmt.Sprintf("https://api.clickup.com/api/v2/list/%s/taskTemplate/%s", url.PathEscape(listId), url.PathEscape(templateId))
 
 	bodyBytes, err := json.Marshal(reqBody)
@@ -525,7 +527,7 @@ func (c *ClickUpClient) CreateTaskFromTemplate(listId, templateId string, reqBod
 		return nil, err
 	}
 
-	var task Task
+	var task cu.Task
 	if err := json.NewDecoder(resp.Body).Decode(&task); err != nil {
 		return nil, err
 	}

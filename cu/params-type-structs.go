@@ -1,4 +1,4 @@
-package solidlamp
+package cu
 
 type GetTaskQueryParams struct {
 	CustomTaskIds              *bool               `json:"custom_task_ids,omitempty"`

@@ -1,4 +1,4 @@
-package solidlamp
+package cu
 
 type List struct {
 	Id     string `json:"id"`

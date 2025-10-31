@@ -1,4 +1,4 @@
-package solidlamp
+package cu
 
 type TaskTimeInStatusResponse struct {
 	CurrentStatus CurrentStatus   `json:"current_status"`

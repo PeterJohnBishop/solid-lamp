@@ -4,9 +4,11 @@ import (
 	"bytes"
 	"encoding/json"
 	"net/http"
+
+	"github.com/PeterJohnBishop/solid-lamp/cu"
 )
 
-func (c *ClickUpClient) GetAccessToken(reqBody GetAccessTokenRequest) (*AccessTokenResponse, error) {
+func (c *ClickUpClient) GetAccessToken(reqBody cu.GetAccessTokenRequest) (*cu.AccessTokenResponse, error) {
 	baseURL := "https://api.clickup.com/api/v2/oauth/token"
 
 	bodyBytes, err := json.Marshal(reqBody)
@@ -31,7 +33,7 @@ func (c *ClickUpClient) GetAccessToken(reqBody GetAccessTokenRequest) (*AccessTo
 		return nil, err
 	}
 
-	var token AccessTokenResponse
+	var token cu.AccessTokenResponse
 	if err := json.NewDecoder(resp.Body).Decode(&token); err != nil {
 		return nil, err
 	}
@@ -39,7 +41,7 @@ func (c *ClickUpClient) GetAccessToken(reqBody GetAccessTokenRequest) (*AccessTo
 	return &token, nil
 }
 
-func (c *ClickUpClient) GetAuthorizedUser() (*AuthorizedUserResponse, error) {
+func (c *ClickUpClient) GetAuthorizedUser() (*cu.AuthorizedUserResponse, error) {
 	baseURL := "https://api.clickup.com/api/v2/user"
 
 	req, err := http.NewRequest("POST", baseURL, nil)
@@ -58,7 +60,7 @@ func (c *ClickUpClient) GetAuthorizedUser() (*AuthorizedUserResponse, error) {
 		return nil, err
 	}
 
-	var user AuthorizedUserResponse
+	var user cu.AuthorizedUserResponse
 	if err := json.NewDecoder(resp.Body).Decode(&user); err != nil {
 		return nil, err
 	}
