@@ -1,6 +1,6 @@
 package cu
 
-type CreateTaskRequest struct {
+type CreateTaskOptions struct {
 	Name                      string                 `json:"name"` // required
 	Description               string                 `json:"description,omitempty"`
 	Assignees                 []int                  `json:"assignees,omitempty"`
@@ -23,16 +23,28 @@ type CreateTaskRequest struct {
 	CustomItemId              int                    `json:"custom_item_id,omitempty"`
 }
 
-type MergeTasksRequest struct {
+type MergeTasksOptions struct {
 	SourceTaskIds []string `json:"source_task_ids"` // required
 }
 
-type CreateTaskFromTemplateRequest struct {
+type CreateTaskFromTemplateOptions struct {
 	Name string `json:"name"` // required
 }
 
-type GetAccessTokenRequest struct {
+type GetAccessTokenOptions struct {
 	ClientId     string `json:"client_id"`     // required
 	ClientSecret string `json:"client_secret"` // required
 	Code         string `json:"code"`          // required
+}
+
+type CreateTaskCommentOptions struct {
+	CommentText   string `json:"comment_text"` // required
+	Assignee      int    `json:"assignee,omitempty"`
+	GroupAssignee int    `json:"group_assignee,omitempty"`
+	NotifyAll     bool   `json:"notify_all,omitempty"`
+}
+
+type CreateChatViewCommentOptions struct {
+	CommentText string `json:"comment_text"` // required
+	NotifyAll   bool   `json:"notify_all,omitempty"`
 }

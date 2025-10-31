@@ -24,3 +24,9 @@ type AuthorizedUserResponse map[string]AuthorizedUser
 type AccessTokenResponse struct {
 	AccessToken string `json:"access_token"`
 }
+
+type CreateTaskCommentResponse struct {
+	Id     string `json:"id"`
+	HistId string `json:"hist_id"`
+	Date   int64  `json:"date"`
+}

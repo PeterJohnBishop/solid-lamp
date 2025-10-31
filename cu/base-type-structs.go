@@ -199,3 +199,70 @@ type BulkTaskTimeInStatus struct {
 	CurrentStatus CurrentStatus   `json:"current_status"`
 	StatusHistory []StatusHistory `json:"status_history"`
 }
+
+type Comment struct {
+	Reactions   []any      `json:"reactions"`
+	Date        string     `json:"date"`
+	Comment     []Comment  `json:"comment"`
+	Assignee    Assignee   `json:"assignee"`
+	AssignedBy  AssignedBy `json:"assigned_by"`
+	Resolved    bool       `json:"resolved"`
+	ReplyCount  string     `json:"reply_count"`
+	Id          string     `json:"id"`
+	CommentText string     `json:"comment_text"`
+	User        User       `json:"user"`
+}
+
+type Assignee struct {
+	Id             int    `json:"id"`
+	Username       string `json:"username"`
+	Initials       string `json:"initials"`
+	Email          string `json:"email"`
+	Color          string `json:"color"`
+	ProfilePicture string `json:"profilePicture"`
+}
+
+type AssignedBy struct {
+	ProfilePicture string `json:"profilePicture"`
+	Id             int    `json:"id"`
+	Username       string `json:"username"`
+	Initials       string `json:"initials"`
+	Email          string `json:"email"`
+	Color          string `json:"color"`
+}
+
+type User struct {
+	Username       string `json:"username"`
+	Initials       string `json:"initials"`
+	Email          string `json:"email"`
+	Color          string `json:"color"`
+	ProfilePicture string `json:"profilePicture"`
+	Id             int    `json:"id"`
+}
+type ChatViewComment struct {
+	Comment     []ChatComment `json:"comment"`
+	CommentText string        `json:"comment_text"`
+	Resolved    bool          `json:"resolved"`
+	Date        string        `json:"date"`
+	ReplyCount  string        `json:"reply_count"`
+	Id          string        `json:"id"`
+	User        User          `json:"user"`
+	Assignee    any           `json:"assignee"`
+	AssignedBy  any           `json:"assigned_by"`
+	Reactions   []any         `json:"reactions"`
+}
+type ChatComment struct {
+	Text string `json:"text"`
+}
+type ListComment struct {
+	Id          string        `json:"id"`
+	CommentText string        `json:"comment_text"`
+	Assignee    Assignee      `json:"assignee"`
+	ReplyCount  string        `json:"reply_count"`
+	Comment     []ChatComment `json:"comment"`
+	User        User          `json:"user"`
+	Resolved    bool          `json:"resolved"`
+	AssignedBy  AssignedBy    `json:"assigned_by"`
+	Reactions   []any         `json:"reactions"`
+	Date        string        `json:"date"`
+}

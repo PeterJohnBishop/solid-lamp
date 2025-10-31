@@ -10,7 +10,7 @@ import (
 	"github.com/PeterJohnBishop/solid-lamp/cu"
 )
 
-func (c *ClickUpClient) CreateTask(listId string, reqBody cu.CreateTaskRequest) (*cu.Task, error) {
+func (c *ClickUpClient) CreateTask(listId string, reqBody cu.CreateTaskOptions) (*cu.Task, error) {
 	baseURL := fmt.Sprintf("https://api.clickup.com/api/v2/list/%s/task", url.PathEscape(listId))
 
 	bodyBytes, err := json.Marshal(reqBody)
@@ -384,7 +384,7 @@ func (c *ClickUpClient) DeleteTask(taskId string, params cu.DeleteTaskQueryParam
 	return nil
 }
 
-func (c *ClickUpClient) MergeTasks(taskId string, reqBody cu.MergeTasksRequest) (*cu.Task, error) {
+func (c *ClickUpClient) MergeTasks(taskId string, reqBody cu.MergeTasksOptions) (*cu.Task, error) {
 	baseURL := fmt.Sprintf("https://api.clickup.com/api/v2/task/%s/merge", url.PathEscape(taskId))
 
 	bodyBytes, err := json.Marshal(reqBody)
@@ -502,7 +502,7 @@ func (c *ClickUpClient) GetBulkTaskTimeInStatus(taskId string, params cu.GetBulk
 	return &bulkTaskTimeInStatus, nil
 }
 
-func (c *ClickUpClient) CreateTaskFromTemplate(listId, templateId string, reqBody cu.CreateTaskFromTemplateRequest) (*cu.Task, error) {
+func (c *ClickUpClient) CreateTaskFromTemplate(listId, templateId string, reqBody cu.CreateTaskFromTemplateOptions) (*cu.Task, error) {
 	baseURL := fmt.Sprintf("https://api.clickup.com/api/v2/list/%s/taskTemplate/%s", url.PathEscape(listId), url.PathEscape(templateId))
 
 	bodyBytes, err := json.Marshal(reqBody)

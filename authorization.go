@@ -8,7 +8,7 @@ import (
 	"github.com/PeterJohnBishop/solid-lamp/cu"
 )
 
-func (c *ClickUpClient) GetAccessToken(reqBody cu.GetAccessTokenRequest) (*cu.AccessTokenResponse, error) {
+func (c *ClickUpClient) GetAccessToken(reqBody cu.GetAccessTokenOptions) (*cu.AccessTokenResponse, error) {
 	baseURL := "https://api.clickup.com/api/v2/oauth/token"
 
 	bodyBytes, err := json.Marshal(reqBody)

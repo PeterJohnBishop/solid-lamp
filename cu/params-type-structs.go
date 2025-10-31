@@ -80,3 +80,25 @@ type GetBulkTaskTimeInStatusQueryParams struct {
 	TeamId        *int     `json:"team_id,omitempty"`
 	TaskIds       []string `json:"task_ids,omitempty"`
 }
+
+type GetTaskCommentsQueryParams struct {
+	CustomTaskIds *bool   `json:"custom_task_ids,omitempty"`
+	TeamId        *int    `json:"team_id,omitempty"`
+	Start         *int    `json:"start,omitempty"`
+	StartId       *string `json:"start_id,omitempty"`
+}
+
+type CreateTaskCommentQueryParams struct {
+	CustomTaskIds *bool `json:"custom_task_ids,omitempty"`
+	TeamId        *int  `json:"team_id,omitempty"`
+}
+
+type GetChatViewCommentsQueryParams struct {
+	Start   *int64  `json:"start,omitempty"`
+	StartId *string `json:"start_id,omitempty"`
+}
+
+type GetListCommentsQueryParams struct {
+	Start   *int64  `json:"start,omitempty"`
+	StartId *string `json:"start_id,omitempty"`
+}
