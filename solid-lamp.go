@@ -1,6 +1,9 @@
 package solidlamp
 
-import "net/http"
+import (
+	"log"
+	"net/http"
+)
 
 type ClickUpClient struct {
 	APIKey     string
@@ -14,7 +17,11 @@ func NewClickUpClient(apiKey string) *ClickUpClient {
 	}
 }
 
-// func Test() {
-// 	client := NewClickUpClient("your_api_key")
-// 	client.
-// }
+func Test() {
+	client := NewClickUpClient("your_api_key")
+	user, err := client.GetAuthorizedUser()
+	if err != nil {
+		log.Println("Error getting Authorized user!")
+	}
+	println("Authorized user:", user.Username)
+}

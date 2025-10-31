@@ -19,8 +19,9 @@ type AuthorizedUser struct {
 	Username          string `json:"username"`
 }
 
-type AuthorizedUserResponse map[string]AuthorizedUser
-
+type AuthorizedUserResponse struct {
+	User AuthorizedUser `json:"user"`
+}
 type AccessTokenResponse struct {
 	AccessToken string `json:"access_token"`
 }

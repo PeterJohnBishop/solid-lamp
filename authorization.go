@@ -41,7 +41,7 @@ func (c *ClickUpClient) GetAccessToken(reqBody cu.GetAccessTokenOptions) (*cu.Ac
 	return &token, nil
 }
 
-func (c *ClickUpClient) GetAuthorizedUser() (*cu.AuthorizedUserResponse, error) {
+func (c *ClickUpClient) GetAuthorizedUser() (*cu.AuthorizedUser, error) {
 	baseURL := "https://api.clickup.com/api/v2/user"
 
 	req, err := http.NewRequest("POST", baseURL, nil)
@@ -60,10 +60,12 @@ func (c *ClickUpClient) GetAuthorizedUser() (*cu.AuthorizedUserResponse, error) 
 		return nil, err
 	}
 
-	var user cu.AuthorizedUserResponse
-	if err := json.NewDecoder(resp.Body).Decode(&user); err != nil {
+	var authorizedUserResponse cu.AuthorizedUserResponse
+	if err := json.NewDecoder(resp.Body).Decode(&authorizedUserResponse); err != nil {
 		return nil, err
 	}
+
+	user := authorizedUserResponse.User
 
 	return &user, nil
 }
