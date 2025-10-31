@@ -30,3 +30,9 @@ type MergeTasksRequest struct {
 type CreateTaskFromTemplateRequest struct {
 	Name string `json:"name"` // required
 }
+
+type GetAccessTokenRequest struct {
+	ClientId     string `json:"client_id"`     // required
+	ClientSecret string `json:"client_secret"` // required
+	Code         string `json:"code"`          // required
+}
