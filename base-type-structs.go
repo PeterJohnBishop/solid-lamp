@@ -176,28 +176,26 @@ type TypeConfig struct {
 	ButtonAutomation *ButtonAutomation `json:"button_automation,omitempty"`
 }
 
-type GetTaskQueryParams struct {
-	Archived                   *bool               `json:"archived,omitempty"`
-	IncludeMarkdownDescription *bool               `json:"include_markdown_description,omitempty"`
-	Page                       *int                `json:"page,omitempty"`
-	OrderBy                    *string             `json:"order_by,omitempty"`
-	Reverse                    *bool               `json:"reverse,omitempty"`
-	Subtasks                   *bool               `json:"subtasks,omitempty"`
-	Statuses                   []string            `json:"statuses,omitempty"` //?statuses[]=to%20do&statuses[]=in%20progress
-	IncludeClosed              *bool               `json:"include_closed,omitempty"`
-	IncludeTiml                *bool               `json:"include_timl,omitempty"`
-	Assignees                  []string            `json:"assignees,omitempty"`
-	Watchers                   []string            `json:"watchers,omitempty"`
-	Tags                       []string            `json:"tags,omitempty"`
-	DueDateGt                  *int64              `json:"due_date_gt,omitempty"`
-	DueDateLt                  *int64              `json:"due_date_lt,omitempty"`
-	DateCreatedGt              *int64              `json:"date_created_gt,omitempty"`
-	DateCreatedLt              *int64              `json:"date_created_lt,omitempty"`
-	DateUpdatedGt              *int64              `json:"date_updated_gt,omitempty"`
-	DateUpdatedLt              *int64              `json:"date_updated_lt,omitempty"`
-	DateDoneGt                 *int64              `json:"date_done_gt,omitempty"`
-	DateDoneLt                 *int64              `json:"date_done_lt,omitempty"`
-	CustomFields               []map[string]string `json:"custom_fields,omitempty"`
-	CustomField                []string            `json:"custom_field,omitempty"`
-	CustomItems                []int               `json:"custom_items,omitempty"`
+type TotalTime struct {
+	ByMinute int    `json:"by_minute"`
+	Since    string `json:"since"`
+}
+
+type CurrentStatus struct {
+	TotalTime TotalTime `json:"total_time"`
+	Status    string    `json:"status"`
+	Color     string    `json:"color"`
+}
+
+type StatusHistory struct {
+	Status     string    `json:"status"`
+	Color      string    `json:"color"`
+	Type       string    `json:"type"`
+	TotalTime  TotalTime `json:"total_time"`
+	Orderindex int       `json:"orderindex"`
+}
+
+type BulkTaskTimeInStatus struct {
+	CurrentStatus CurrentStatus   `json:"current_status"`
+	StatusHistory []StatusHistory `json:"status_history"`
 }

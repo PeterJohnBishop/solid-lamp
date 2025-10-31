@@ -13,3 +13,8 @@ func NewClickUpClient(apiKey string) *ClickUpClient {
 		HTTPClient: &http.Client{},
 	}
 }
+
+// func Test() {
+// 	client := NewClickUpClient("your_api_key")
+// 	client.
+// }
