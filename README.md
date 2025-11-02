@@ -3,6 +3,7 @@
 A basic 1:1 replication of the ClickUp V2 API accessible through Client. 
 
 Go gettable at github.com/PeterJohnBishop/solid-lamp (to be updated).
+- go get -u github.com/PeterJohnBishop/solid-lamp to update package
 
 # example
 
