@@ -6,6 +6,7 @@ import (
 	"os"
 
 	solidlamp "github.com/PeterJohnBishop/solid-lamp"
+	"github.com/PeterJohnBishop/solid-lamp/cu"
 	"github.com/joho/godotenv"
 )
 
@@ -17,9 +18,10 @@ func main() {
 
 	key := os.Getenv("API_KEY")
 	client := solidlamp.NewClickUpClient(key)
-	user, err := client.GetAuthorizedUser()
+	params := cu.GetTaskQueryParams{}
+	task, err := client.GetTask("868fntvay", params)
 	if err != nil {
 		fmt.Printf("Error: %s", err.Error())
 	}
-	fmt.Printf("Found user %s", user.Username)
+	fmt.Printf("Found task %s", task)
 }

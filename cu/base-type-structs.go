@@ -41,7 +41,7 @@ type CustomField struct {
 	Type           string     `json:"type"`
 	TypeConfig     TypeConfig `json:"type_config"`
 	DateCreated    string     `json:"date_created"`
-	Value          string     `json:"value"`
+	Value          *string    `json:"value,omitempty"`
 	Required       bool       `json:"required"`
 }
 

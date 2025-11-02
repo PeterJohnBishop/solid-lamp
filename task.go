@@ -260,7 +260,7 @@ func (c *ClickUpClient) GetFilteredTeamTasks(teamId string, params cu.GetFiltere
 	return &tasks, nil
 }
 
-func (c *ClickUpClient) GetTask(taskId string, params cu.GetTaskQueryParams) (*cu.Task, error) {
+func (c *ClickUpClient) GetTask(taskId string, params *cu.GetTaskQueryParams) (*cu.Task, error) {
 	baseURL := fmt.Sprintf("https://api.clickup.com/api/v2/task/%s", url.PathEscape(taskId))
 
 	q := url.Values{}
