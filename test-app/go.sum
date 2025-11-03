@@ -2,5 +2,7 @@ github.com/PeterJohnBishop/solid-lamp v0.0.0-20251102154754-95dbf468154b h1:1Cb9
 github.com/PeterJohnBishop/solid-lamp v0.0.0-20251102154754-95dbf468154b/go.mod h1:D9/hKWPBj8b53LM5F50x75XH+hgHLrXum41C1rm0hB8=
 github.com/PeterJohnBishop/solid-lamp v0.0.0-20251102161514-95cd8675eadf h1:hopdv93uL+FS976nsetzyujr7MxWpPULXmNjTe4XBkw=
 github.com/PeterJohnBishop/solid-lamp v0.0.0-20251102161514-95cd8675eadf/go.mod h1:D9/hKWPBj8b53LM5F50x75XH+hgHLrXum41C1rm0hB8=
+github.com/PeterJohnBishop/solid-lamp v0.0.0-20251102201153-f4ea896ae355 h1:DdtD9xVEKRNN8rI23x6eYcUDGG8QVa6mg4nMoqcjTz8=
+github.com/PeterJohnBishop/solid-lamp v0.0.0-20251102201153-f4ea896ae355/go.mod h1:D9/hKWPBj8b53LM5F50x75XH+hgHLrXum41C1rm0hB8=
 github.com/joho/godotenv v1.5.1 h1:7eLL/+HRGLY0ldzfGMeQkb7vMd0as4CfYvUVzLqw0N0=
 github.com/joho/godotenv v1.5.1/go.mod h1:f4LDr5Voq0i2e/R5DDNOoa2zzDfwtkZa6DnEwAbqwq4=

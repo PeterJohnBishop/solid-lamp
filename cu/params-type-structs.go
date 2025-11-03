@@ -8,6 +8,24 @@ type GetTaskQueryParams struct {
 	CustomFields               []map[string]string `json:"custom_fields,omitempty"`
 }
 
+func SetGetTaskQueryParams(customTaskIds, includeMarkdown, includeSubtasks bool,
+	teamId int,
+	customFields ...[]map[string]string,
+) *GetTaskQueryParams {
+	var fields []map[string]string
+	if len(customFields) > 0 {
+		fields = customFields[0]
+	}
+
+	return &GetTaskQueryParams{
+		CustomTaskIds:              &customTaskIds,
+		TeamId:                     &teamId,
+		IncludeMarkdownDescription: &includeMarkdown,
+		IncludeSubtasks:            &includeSubtasks,
+		CustomFields:               fields,
+	}
+}
+
 type GetTasksQueryParams struct {
 	Archived                   *bool               `json:"archived,omitempty"`
 	IncludeMarkdownDescription *bool               `json:"include_markdown_description,omitempty"`
